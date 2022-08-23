@@ -1,19 +1,19 @@
-name: Your New Jekyll Site
-description: Blogging about stuffs
-meta_description: "Your New Jekyll Site, Blogging about stuffs"
+name: tech-blog
+description: 태용's 기술 블로그
+meta_description: 프론트엔드 기술블로그
 
 markdown: kramdown
 highlighter: rouge
-logo: false
+logo: true
 paginate: 15
 baseurl: /tech-blog
-domain_name: "http://yourblog-domain.com"
+domain_name: "https://bpthess.github.io/tech-blog"
 google_analytics: "UA-XXXXXXXX-X"
 plugins: [jekyll-paginate]
 
 # Details for the RSS feed generator
-url: "https://bpthess.github.io/"
-author: "tylee"
+url: "https://bpthess.github.io/tech-blog"
+author: "tyLee"
 
 # Disqus config
 disqus-shortname: ""
