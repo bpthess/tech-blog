@@ -1,7 +1,12 @@
-### 기술 블로그 포스팅
+### 개발 일지
 
-bundle exec jekyll serve
+### 실행
+
+jekyll serve
 
 ### 깃 커밋 메시지
 
 Post
+design
+setting
+theme

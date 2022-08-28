@@ -894,7 +894,7 @@ margin on the iframe, cause it breaks stuff. */
 .post {
     position: relative;
     width: 80%;
-    max-width: 710px;
+    max-width: 750px;
     margin: 4rem auto;
     padding-bottom: 4rem;
     border-bottom: #EBF2F6 1px solid;
@@ -1060,7 +1060,6 @@ body:not(.post-template) .post-title {
 
 /* Keep images centred and within the bounds of the post-width */
 .post-content img {
-    display: block;
     max-width: 100%;
     height: auto;
     margin: 0 auto;
@@ -1068,7 +1067,7 @@ body:not(.post-template) .post-title {
 }
 
 .post-content>p {
-    width: 110%;
+    width: 100%;
 }
 
 /* Break out larger images to be wider than the main text column
@@ -1076,7 +1075,7 @@ body:not(.post-template) .post-title {
 .post-content .full-img {
     width: 100%;
     max-width: none;
-    margin: 0 -13%;
+    /* margin: 0 -13%; */
 }
 
 /* The author credit area after the post */
