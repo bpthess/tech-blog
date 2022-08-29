@@ -8,20 +8,22 @@ date: "2022-08-26 09:00:00 +0900"
 
 <br>
 -- 필자는 Docker로 개발환경을 설계한 상태였으나 AWS가 아닌 heroku로 서버를 배포할 수 있다는 정보를 주워들어서 무작정 heroku로 서버 배포를 택하였다.   
-AWS로 Docker를 배포가 가능하다는 것을 뒤늦게 알게되었다. 하지만 백분이불여일견, "이런 삽질또한 경험이지"라는 생각으로 해당 내용에 대해 포스팅하려 한다.
-또한 node를 배포하기에 heroku가 가장 최적합 하다는 정보도 알게되었다.
+사실 AWS로 Docker를 배포가 가능하다는 사실을 뒤늦게 알게되었다. 하지만 전화위복이 있듯, "이것 또한 경험이지"라는 마인드로 접근하고자 한다.
 
 <br>
 ### 배포 삽질 과정
 
 폴더 경로 구조는 이렇다.
+
 ```bash
 app
 |---backend
 |---frontend
 ```
-나는 Gibhub Pages(프론트) + heroku(백엔드)로 연동하여 배포하고자 했다.   
+
+나는 Gibhub Pages(프론트) + heroku(백엔드)로 연동하여 배포하고자 했다.  
 우선 heroku cli를 설치했다.
+
 ```bash
 $ npm install -g heroku (cli 설치 명령어)
 ```
@@ -42,9 +44,10 @@ $ heroku login
 <img src="{{'/assets/img/heroku/heroku-login_success.png' | relative_url}}" style="width: 100%">
 
 그 다음 heroku에 프로젝트 이름을 만들었다.
+
 ```bash
 $ heroku create ${PROJECT-NAME}
-``` 
+```
 
 <br>
 이제 <code>$ git init</code>으로 remote에 heroku를 추가했다.   
@@ -55,7 +58,7 @@ $ heroku create ${PROJECT-NAME}
 이제 커밋 & 푸쉬해보자.   
 <code>$ git add .</code>   
 <code>$ git commit -m "${commit message}"</code>   
-<code>$ git push heroku master</code>  
+<code>$ git push heroku master</code>
 
 <br>
 빌드업 진행 중 아래 코드가 나타나면서 빌드 실패가 됐다.
@@ -90,16 +93,18 @@ web : node ${package에 있는 실행 명령어 or 루트디렉토리 index파�
 필자는 CRA가 아닌 node로 사용했기 때문에 루트 디렉토리 <code>node ${index파일명.js}</code>으로 입력하였다.
 그런데도 똑같은 에러가 났다.
 열심히 구글링 했더니 띄어쓰기 버그가 있다고 한다. <code>web : node</code>
-하지만 실패.   
+하지만 실패.
 
 노드와 npm 버전이 다를 수도 있다는 의견이 나왔다.
 그래서 직접적으로 버전을 설정해주었다.
+
 ```bash
   "engines": {
     "node": "16.15.0",
     "npm": "8.5.5"
   },
 ```
+
 그래도 실패.
 
 <br>
@@ -112,11 +117,11 @@ git subtree push --prefix web heroku master
 
 <br>
 드디어 서버 빌드에 성공하게 되었다.
-<img src="{{'/assets/img/heroku/heroku-build_success.png' | relative_url}}" style="width: 100%">   
+<img src="{{'/assets/img/heroku/heroku-build_success.png' | relative_url}}" style="width: 100%">
 
-<code>경로: https://${FROJECT_NAME}.herokuapp.com/$ {api경로}</code>   
-<img src="{{'/assets/img/heroku/heroku-build_data.png' | relative_url}}">   
-해당 데이터를 잘 받아들어오고 있다.   
+<code>경로: https://${FROJECT_NAME}.herokuapp.com/$ {api경로}</code>  
+<img src="{{'/assets/img/heroku/heroku-build_data.png' | relative_url}}">  
+해당 데이터를 잘 받아들어오고 있다.  
 이제 깃허브에 연동하기만 하면 되는데 역시나.. 쉽게 되는 것 하나 없다.
 
 <br>
@@ -178,24 +183,27 @@ app
 app.use(express.static(path.join(__dirname, "frontend/build")));
 
 // 라우트 설정
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/frontend/build/index.html"));
+app.get("\*", (req, res) => {
+res.sendFile(path.join(\_\_dirname + "/frontend/build/index.html"));
 });
-```
+
+````
 
 <code>ReferenceError: __dirname is not defined</code>에러가 나왔다.
 Express에서 CommonJS에서 사용하던 __dirname 변수가 ES 모듈에서는 없기 때문에 발생하는 에러이다.
 ```bash
 import path from 'path';
 const __dirname = path.resolve();
-```
+````
+
 해당 에러는 path 모듈로 루트 디렉토리를 지정하는 경로를 제공해줘서 해결해준다.
 
 <br>
 > - <https://node-js.tistory.com/entry/Nodejs-dirname-is-not-defined-%EC%97%90%EB%9F%AC>   
-> - <http://daplus.net/node-js-__dirname%EC%9C%BC%EB%A1%9C-path-join-vs-path-resolve/>   
+> - <http://daplus.net/node-js-__dirname%EC%9C%BC%EB%A1%9C-path-join-vs-path-resolve/>
 
 다시 루트 디렉토리의 package.json에서 script 안에 추가했다.
+
 ```bash
   "scripts": {
     "heroku-postbuild": "cd frontend && npm install && npm run build",
@@ -206,7 +214,7 @@ const __dirname = path.resolve();
 그리고 다시 빌드를 실행했다.   
 <code>$ git add .</code>   
 <code>$ git commit -m "${commit message}"</code>   
-<code>$ git push heroku master</code>   
+<code>$ git push heroku master</code>
 
 <br>
 기대도 안했다. 역시 에러가 났다.
@@ -215,7 +223,7 @@ const __dirname = path.resolve();
 <br>
 헤로쿠에 어떤 버전의 nodejs 사용하고 있는지 알려줘야 한다고 한다.
 배포 전 heroku가 지원하는 nodejs 버전도 잘 확인해야한다.
-> <https://devcenter.heroku.com/articles/python-support>   
+> <https://devcenter.heroku.com/articles/python-support>
 
 <br>
 하위 디렉토리 runtime 파일 생성
@@ -226,7 +234,7 @@ $ nodejs-v16.15.0
 <br>
 다시 빌드해보자.
 <img src="{{'/assets/img/heroku/heroku-build_success_02.png' | relative_url}}" style="width: 100%">
-빌드에 성공했다. 이제 되는 것인가?!   
+빌드에 성공했다. 이제 되는 것인가?!
 
 <br>
 <img src="{{'/assets/img/heroku/heroku-build_web_error.png' | relative_url}}" style="width: 100%">   
@@ -243,4 +251,4 @@ $ heroku logs --tail
 at=error code=H10 desc="App crashed" method=GET path="/" host=e-commerce0001.herokuapp.com
 at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=e-commerce0001.herokuapp.com
 ```
-<img src="{{'/assets/img/heroku/heroku-logs_tail.png' | relative_url}}" style="width: 100%">  
+<img src="{{'/assets/img/heroku/heroku-logs_tail.png' | relative_url}}" style="width: 100%">
