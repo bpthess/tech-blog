@@ -7,6 +7,6 @@ jekyll serve
 ### 깃 커밋 메시지
 
 Post
-design
-setting
-theme
+Design
+Setting
+Theme
