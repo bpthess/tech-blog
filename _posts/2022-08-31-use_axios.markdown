@@ -221,12 +221,12 @@ const { data } = await axios.get(
 
 이 고민은 다음 회사에 들어간다면 다른 분들에게 여쭈어 보려고 한다.
 
-참조
+<br>
+<img src="{{'/assets/img/axios/404error.png' || relative_url}}">
+참조  
+<https://codeutility.org/reactjs-uncaught-in-promise-error-request-failed-with-status-code-404-stack-overflow/>
 
-[https://codeutility.org/reactjs-uncaught-in-promise-error-request-failed-with-status-code-404-stack-overflow/](https://codeutility.org/reactjs-uncaught-in-promise-error-request-failed-with-status-code-404-stack-overflow/)
-
-![화면 캡처 2022-08-17 043110.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fb9ecb31-cf1b-456f-9177-8dacabbfeae5/%ED%99%94%EB%A9%B4_%EC%BA%A1%EC%B2%98_2022-08-17_043110.png)
-
+<br>
 해결 코드
 
 ```jsx
