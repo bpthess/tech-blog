@@ -26,10 +26,11 @@ MSYS2 설치가 안되어 있거나 릴리즈 업데이트 되서 오류가 나�
 
 <br>
 <br>
-에러코드: <code>'require': cannot load such file -- webrick (LoadError)</code>   
+에러코드: <code>'require': cannot load such file -- webrick (LoadError)</code>  
 <img src="{{'/assets/img/error_webrick.png' || relative_url}}" width="60%" style="margin: 0 auto;">
-이런 경우 bundle add webrick으로 webrick을 추가해 주고 다시 실행하면 된다.   
-이유는 ruby 3.0.0부터 webrick이 기본으로 포함된 gem에서 빠졌기 때문이다.   
+이런 경우 bundle add webrick으로 webrick을 추가해 주고 다시 실행하면 된다.  
+이유는 ruby 3.0.0부터 webrick이 기본으로 포함된 gem에서 빠졌기 때문이다.
+
 > <https://junho85.pe.kr/1850/>
 
 <br>
