@@ -1,14 +1,14 @@
-### 개발 일지
+# :: 개발 일지
 
-### 실행
+## 실행
 
-source ~/.bash
+source ~/.bash   
 jekyll serve
 
-### 깃 커밋 메시지
+## 깃 커밋 메시지
 
-Post
-Design
-Setting
-Theme
-Desc
+Post  
+Design  
+Setting  
+Theme  
+Desc  
