@@ -947,6 +947,7 @@ body:not(.post-template) .post-title {
 
 .post-title a {
     text-decoration: none;
+    font-size: 3.2rem;
 }
 
 .post-excerpt p {
