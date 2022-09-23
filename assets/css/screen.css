@@ -953,6 +953,7 @@ body:not(.post-template) .post-title {
 .post-excerpt p {
     margin: 0;
     line-height: 1.7em;
+    font-size: 1.6rem;
 }
 
 .read-more {
