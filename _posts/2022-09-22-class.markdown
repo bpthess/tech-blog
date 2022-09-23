@@ -120,14 +120,14 @@ class User implements Inherit {
 
 ### 참조
  
-https://developer.mozilla.org/ko/docs/Web/JavaScript/Closures#%ED%81%B4%EB%A1%9C%EC%A0%80closure  
-https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Classes  
-https://velog.io/@0seo8/JS-%EC%9D%80%EB%8B%89%ED%99%94-os17ra37  
-https://yozm.wishket.com/magazine/detail/1396/ 
-http://crockford.com/javascript/private.html  
-https://opentutorials.org/course/743/6544  
-https://dokdogalmaegi.tistory.com/48  
-https://meetup.toast.com/posts/90  
-https://think0wise.tistory.com/27  
-https://ko.javascript.info/class  
+> <https://developer.mozilla.org/ko/docs/Web/JavaScript/Closures#%ED%81%B4%EB%A1%9C%EC%A0%80closure>  
+> <https://velog.io/@0seo8/JS-%EC%9D%80%EB%8B%89%ED%99%94-os17ra37>  
+> <https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Classes>  
+> <https://yozm.wishket.com/magazine/detail/1396/>    
+> <http://crockford.com/javascript/private.html>  
+> <https://opentutorials.org/course/743/6544>  
+> <https://dokdogalmaegi.tistory.com/48>  
+> <https://meetup.toast.com/posts/90>  
+> <https://think0wise.tistory.com/27>  
+> <https://ko.javascript.info/class>  
   
