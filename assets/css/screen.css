@@ -856,7 +856,7 @@ margin on the iframe, cause it breaks stuff. */
 /* The details of your blog. Defined in ghost/settings/ */
 .page-title {
     margin: 10px 0 10px 0;
-    font-size: 5rem;
+    font-size: 4rem;
     letter-spacing: -1px;
     font-weight: 700;
     color: #fff;
