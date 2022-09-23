@@ -1,0 +1,131 @@
+---
+layout: post
+title: 클래스를 통한 캡슐화, 은닉화
+categories: class,getter,setter
+author: tyLee
+date: "2022-09-23 09:00:00 +0900"
+---
+
+-- ES6로 들어서부터 객체지향 문법인 class가 추가되어, 객체 지향 프로그래밍에서 사용되는 다양한 기능을 자바스크립트에서도 사용할 수 있게 되었다. 자바스크립트 언어 자체가 함수형 객체기 때문에 객체지향을 흉내내는 언어라고 한다. 최근에는 객체지향 패러다임적으로 변화하는 추세라고 한다. 하지만 트렌드가 바뀌고 있다고 한들 무조건 객체지향 패러다임으로 취해야 하는 것은 아니다. 자바스크립트에서는 어떠한 방식을 쓰든 코드의 재사용성을 높이고, 간결한 문법와 간편한 구조를 만들어 내는 것이 잘하는 것이라고 생각한다. <a href="https://yozm.wishket.com/magazine/detail/1396/" target="_blank">[참조]</a>
+
+<br>
+
+### 클래스란?
+> 클래스(Class)는 객체 지향 프로그래밍에서 특정 객체를 생성하기 위해 변수와 메소드를 정의하는 일종의 틀로, 객체를 정의하기 위한 상태(멤버 변수)와 메서드(함수)로 구성된다.<위키백과> 
+
+클래스는 클로저와 꽤나 비슷한 구조를 가지고 있다. ES6이전에는 자바스크립트에서는 클로저를 사용하였는데, 클래스가 생기고 나서부터 클로저를 대신하여 쓰이기도 한다고 한다. 클로저는 쉽게 말해 함수 안에 함수를 만들어 외부에 접근할 수 있게 하는 것이다(캡슐화). 자바스크립트 객체는 접근제한자(Public, Private, Protected)를 가질 수 있다. Public이 기본으로 적용되어 있다. Private 속성은 객체의 외부에서는 접근 할 수 없는 외부에 감춰진 속성이나 메소드를 의미한다(은닉화). Protected는 자식 클래스에서만 접근 가능하다. 이를 통해서 객체의 내부에서만 사용해야 하는 값이 노출됨으로서 생길 수 있는 오류를 줄일 수 있다. 
+
+<br>
+<img src="{{'/assets/img/class/class_closure.png' | relative_url}}" style="width: 75%; display: block;">
+<br>
+
+### 장점
+1. 데이터 접근 제어
+2. 내외부 데이터 노출 구분 가능
+3. 객체의 재사용성 ↑
+
+<br>
+
+### 클래스 선언
+타입 지정
+```tsx
+// 인터페이스 선언
+interface Inherit {
+  id: number;
+  name: string;
+}
+```
+
+클래스 선언
+```tsx
+// 클래스 선언 & 인터페이스 연결
+class User implements Inherit {
+/**
+ * 접근제한자 Private, 필드 선언
+ * 필드 선언함으로 언제나 존재하고 있는 상태로 인식
+ * _는 자바스크립트 내부에서 암묵적으로 Private로 인식하겠다라는 의미
+ */
+private _id: number;
+private _name: string;
+}
+```
+
+생성자 선언
+```tsx
+// 생성자(constructor) 선언
+/**
+ * constructor는 초기화하기 위한 메서드
+ * 메서드 안에 인스턴스 정의
+ */
+constructor (
+  id: number;
+  name: string;
+) {
+  this._id = id;
+  this._name = name;
+}
+```
+
+getter, setter로 예외처리
+```tsx
+// 
+/**
+ * getter 사용
+ * get으로 값을 사용하려고 시도하면 메모리에 저장된 값을 불러오지 않고 getter를 호출한다.
+ * setter가 없어도 기본적으로 getter가 실행한다. getter, setter 둘다 있으면 setter를 실행한다.
+ */
+get id() {
+  return this._id;
+}
+/**
+ * setter 사용(예외처리)
+ * setter를 추가하면 값을 할당하려고 시도하면 값에 직접 할당하지 않고 바로 setter를 호출한다.
+ * setter로 데이터 값을 바꿀수도 있다.
+ */
+set id(value) {
+  if(value > 10) {
+    console.log("테스트");
+  }
+  this._id = value;
+}
+
+get name() {
+  return this._name;
+}
+```
+
+결과
+```tsx
+const x = new User(1, "${...}")
+console.log("x:", x) // x: 1, ${...}
+```
+
+리팩토링
+```tsx
+class User implements Inherit {
+  // 필드와 인스턴스 속성을 파라미터에서 선언해주면 전달하는 값 동일
+  constructor (
+    private _id: number;
+    private _name: string;
+  ) {}
+}
+```
+
+<br>
+
+### 끝마치며
+클래스 공부하면서 객체지향과 자바스크립트의 생태계 흐름, 그리고 getter, setter를 알게되었다. 개발함에 있어서 예외처리를 고려함으로써 에러를 좀 더 잡아낼 수 있도록 설계하는 개발자적인 사고방식에 한 걸음 더 접근할 수 있는 기회가 된 것 같다. 
+
+<br>
+
+### 참조
+https://yozm.wishket.com/magazine/detail/1396/  
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Closures#%ED%81%B4%EB%A1%9C%EC%A0%80closure  
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Classes
+https://meetup.toast.com/posts/90  
+http://crockford.com/javascript/private.html  
+https://think0wise.tistory.com/27  
+https://opentutorials.org/course/743/6544  
+https://velog.io/@0seo8/JS-%EC%9D%80%EB%8B%89%ED%99%94-os17ra37  
+https://ko.javascript.info/class  
+https://dokdogalmaegi.tistory.com/48  
