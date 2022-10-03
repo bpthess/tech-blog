@@ -27,15 +27,13 @@ date: "2022-10-03 09:00:00 +0900"
 
 #### NEXT.JS 셋팅
 
-CRA
-
-```bash
--> npx create-next-app ${folder-name} --typescript
-```
-
+CRA  
 port: 3000
 
 ```bash
+-> npx create-next-app ${folder-name} --typescript
+-> cd ${folder-name}
+-> code .
 -> npm run dev
 ```
 
@@ -45,13 +43,11 @@ port: 3000
 
 <img src="{{'/assets/img/next/folder.png' | relative_url}}" style="width: 30%;">
 
-**pages** : 어플리케이션을 구성하는 컴포넌트를 위한 폴더입니다.  
-**error** : 각 페이지 에러를 위한 폴더입니다.  
-**i18n** : 다국어를 위한 폴더입니다.
+- **pages** : 어플리케이션을 구성하는 페이지 위한 폴더
+- **public** : 어플리케이션에 사용되는 정적 폴더
+- **styles** : 전역으로 컴포넌트의 스타일을 입혀주는 폴더
 
 <br>
-
-<!-- <img src="{{'/assets/img/next/pages.png' | relative_url}}" style="width: 30%;"> -->
 
 렌더링 구조
 
@@ -61,6 +57,25 @@ pages
     |---index.tsx
 |---_app.tsx
 |---index.tsx
+```
+
+먼저 \_app은 서버로 요청이 들어왔을 때 가장 먼저 실행되는 컴포넌트로, 페이지에 적용할 공통 레이아웃의 역할을 한다.  
+헤더나 푸터를 위와같이 처리해주면 모든 컴포넌트에서 헤더와 푸터를 자동적으로 불러와서 사용할 수 있다.  
+또한 pageProps는 Component(해당 페이지에서 불러오는 컴포넌트)에서 사용하는 props인데 이때 공통적으로 사용할 props 등을 처리해서 넘겨줄 수도 있게된다.
+
+<br>
+
+\_app.tsx
+
+```tsx
+import "../styles/globals.css";
+import type { AppProps } from "next/app";
+
+function MyApp({ Component, pageProps }: AppProps) {
+  return <Component {...pageProps} />;
+}
+
+export default MyApp;
 ```
 
 <br>
@@ -93,6 +108,8 @@ export default HomePage;
 
 #### 참조
 
+> <https://velog.io/@kirin/Next.js-%ED%8E%98%EC%9D%B4%EC%A7%80-%EA%B5%AC%EC%A1%B0>  
+> <https://minhanpark.github.io/today-i-learned/nextjs-scaffold/>  
 > <https://nextjs.org/docs/getting-started>  
 > <https://heokknkn.tistory.com/27>  
 > <https://youtu.be/C6kiIkrBdyE>
