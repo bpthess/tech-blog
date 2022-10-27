@@ -454,9 +454,24 @@ hr {
   display: block;
   height: 1px;
   border: 0;
-  border-top: #efefef 1px solid;
-  margin: 3.2em 0;
+  border-top: #efefef 1.5px solid;
+  margin: 2.2em 0;
   padding: 0;
+  position: relative;
+  overflow: visible;
+}
+
+hr:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid #cfcfcf;
+  z-index: 1000000;
 }
 
 blockquote {
@@ -1625,7 +1640,7 @@ body:not(.post-template) .post-title {
   }
 
   hr {
-    margin: 2.4em 0;
+    margin: 2.0em 0;
   }
 
   ol,
@@ -1809,7 +1824,7 @@ body:not(.post-template) .post-title {
   }
 
   hr {
-    margin: 1.75em 0;
+    margin: 1em 0;
   }
 
   p,
