@@ -1792,6 +1792,10 @@ body:not(.post-template) .post-title {
     line-height: 1.65em;
   }
 
+  .post-title a {
+    font-size: 2.5rem;
+  }
+
   .post-date {
     display: none;
   }
