@@ -1808,7 +1808,7 @@ body:not(.post-template) .post-title {
   }
 
   .post-title a {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
   }
 
   .post-date {
@@ -1836,7 +1836,7 @@ body:not(.post-template) .post-title {
   }
 
   .page-title {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 
   .post-excerpt p {
