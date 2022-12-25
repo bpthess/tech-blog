@@ -1,9 +1,9 @@
 ---
 layout: post
-title: DJ, drop the Vite
+title: Vite 주세요
 categories: vite
 author: tyLee
-date: "2022-11-12 09:00:00 +0900"
+date: "2022-12-25 09:00:00 +0900"
 ---
 
 -- 하루마다 변해가는 게 프론트엔드 생태계에서 요즘 뜨고 있는 개발 프레임워크가 VITE이다. 처음에 코딩애플의 VITE 영상을 보고 처음 접하게 되었다. 뭐 대충 요약하자면 리액트보다 번들링이 10배 빠르다고 한다. 핫모듈을 이용해 번들링 시간을 단축시킬 수 있지만, 프로젝트가 커질수록 핫모듈에도 시간이 늘어나고 있다. 이를 보완 하고자 하여 나온 게 VITE이다. 기본적으로 ES Modules를 사용하며, Rollup처럼 쉽게 설정할 수 있다. HMR 등 부가적인 기능 역시 기본적으로 지원한다.
@@ -11,7 +11,7 @@ date: "2022-11-12 09:00:00 +0900"
 <br>
 <br>
 
-<img src="{{'/assets/img/vite/vite_logo.webp' | relative_url}}" style="margin: 0 auto;">
+<img src="{{'/assets/img/vite/vite_logo2.png' | relative_url}}" style="margin: 0 auto;">
 
 <br>
 
