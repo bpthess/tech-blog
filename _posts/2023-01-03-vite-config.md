@@ -14,8 +14,9 @@ date: "2023-01-03 09:00:00 +0900"
 <img src="{{'/assets/img/vite/vite_logo2.png' | relative_url}}" style="margin: 0 auto;">
 
 <br>
+<hr>
 
-### 코드 스플리팅
+## 코드 스플리팅
 
 코드 스플릿을 입힘으로써 렌더링 시에 필요한 데이터만 가져와 렌더링 시간 단축과 메모리 사용을 줄일 수 있다.
 
@@ -108,7 +109,7 @@ return {
 <br>
 <br>
 
-### 청크 분리
+## 청크 분리
 
 vite.config.ts
 
