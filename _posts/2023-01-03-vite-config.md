@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Vite 코드 스플리팅 & 청크 분리
-categories: vite, build, chunk, code splitting
+categories: vite,build,chunk,code splitting
 author: tyLee
 date: "2023-01-03 09:00:00 +0900"
 ---
